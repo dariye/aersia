@@ -1,0 +1,387 @@
+@import url('nes.css/css/nes.css');
+
+
+/**
+ * NES Overrides
+ */
+
+.nes-progress {
+  margin: 0;
+}
+
+.nes-list {
+  padding-left: 1.5rem;
+}
+
+/**
+ * aersia.pauldariye.com styles
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #e7e7e7;
+}
+
+::-webbkit-scrollbar-thumb,
+::-webbkit-scrollbar-thumb:hover {
+  background: #212529;
+}
+
+main {
+  position: relative;
+}
+
+li {
+  list-style-type: none;
+}
+
+#playback,
+#playlist {
+  width: 100%;
+}
+
+/* #playback { */
+/*   position: fixed; */
+/*   z-index: 2; */
+/* } */
+/*  */
+/* #playlist { */
+/*   top: 7em; */
+/*   left: 0; */
+/*   z-index: 2; */
+/*   background: white; */
+/* } */
+
+audio {
+  display: none;
+}
+
+input {
+  width: 100%;
+}
+
+input[type=search] {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+input[type=search]:focus {
+  outline: none;
+}
+
+article h3 {
+  font-size: 0.4rem;
+}
+
+article h4 {
+  font-size: 0.5em;
+}
+
+.controls {
+  transition: all 0.3s ease-in;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: white;
+  padding-bottom: 0.2rem;
+}
+
+.control-group {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 0.3rem;
+}
+
+.control-group button {
+  flex-grow: 1;
+  flex-basis: 8%;
+}
+
+.control-group .volume {
+  flex-grow: 2;
+  flex-basis: 25%;
+}
+
+.control-group .progress {
+
+}
+
+.control-group input[type=range] {
+
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  flex-basis: 50%;
+}
+
+
+
+.volume,
+.progress {
+  position: relative;
+  z-index: 0;
+}
+
+
+
+input[type=range] {
+  height: 48px;
+  width: 100%;
+  padding: 4px;
+  color: #212529;
+  background-color: #fff;
+  box-shadow: 4px 0, -4px 0, 0 4px, 0 -4px;
+  appearance: none;
+  outline: none;
+}
+
+/** black and white background **/
+/**
+ background-color: #212529;
+background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+background-position: 0 0, 10px 10px;
+background-size: 20px 20px;
+**/
+
+input[type=range]::-webkit-slider-thumb {
+  transition: all 0.1s ease-in;
+  position: relative;
+  -webkit-appearance: none;
+  background-color: #212529;
+  cursor: url(https://unpkg.com/nes.css/assets/cursor.png), auto;
+  border: none;
+  height: 100%;
+  width: 0.5rem;
+}
+
+input[type=range]::-moz-range-thumb {
+  position: relative;
+  -webkit-appearance: none;
+  background-color: #212529;
+  cursor: pointer;
+  border: none;
+  height: 100%;
+  width: 0.5rem;
+}
+
+input[type=range]::-ms-thumb {
+  position: relative;
+  -webkit-appearance: none;
+  background-color: #212529;
+  cursor: pointer;
+  border: none;
+  height: 100%;
+  width: 0.5rem;
+}
+
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  color: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 100%;
+  cursor: inherit;
+  background: #e7e7e7;
+  border: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #e7e7e7;
+}
+
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 100%;
+  cursor: inherit;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+.controls .duration,
+.controls .elasped {
+  flex-grow: 2;
+  flex-basis: 30%;
+}
+
+.play,
+.pause {
+  top: 0;
+  left: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.search-container,
+.playlist-container {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.playlist-container {
+  padding-bottom: 0.1rem;
+}
+
+.tracks {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  max-height: 40rem;
+}
+
+
+.track {
+
+}
+
+
+.is-gray,
+.is-gray:after,
+.is-gray:before {
+  background-color: #e7e7e7;
+}
+
+
+.playlist-container li {
+  transition: all 0.3s ease-in-out;
+}
+
+.playlist-container li:hover {
+  box-shadow: 0 4px #212529, 0 -4px #212529, 4px 0 #212529, -4px 0 #212529;
+}
+
+footer p,
+footer li {
+  font-size: 0.5rem;
+}
+
+footer li {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+footer p {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+footer .heart {
+  vertical-align: middle;
+}
+
+footer h3 {
+  font-size: 0.7rem;
+}
+
+footer main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+footer section {
+  flex-basis: 50%;
+}
+
+.indicator {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 99999;
+}
+
+.connection-indicator {
+  display: flex;
+  max-width: 20rem;
+  background: white;
+}
+
+.connection-indicator button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media only screen and (min-width: 659px) {
+  .controls {
+    flex-direction: row;
+  }
+
+  .control-group {
+    width: 50%;
+    padding-top: 0;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  main {
+    max-width: 800px;
+  }
+}
+
