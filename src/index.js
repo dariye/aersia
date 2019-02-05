@@ -43,11 +43,11 @@ async function main () {
     const search = document.querySelector('#search')
     search.addEventListener('keyup', filter)
 
-    const connectionIndicatorBtn = document.querySelector('.connection-indicator button')
-    connectionIndicatorBtn.addEventListener('click', () => {
-      const indicator = document.querySelector('.indicator')
-      indicator.classList.add('hide')
-    })
+    // const connectionIndicatorBtn = document.querySelector('.connection-indicator button')
+    // connectionIndicatorBtn.addEventListener('click', () => {
+    //   const indicator = document.querySelector('.indicator')
+    //   indicator.classList.add('hide')
+    // })
     //offline indicator
     window.addEventListener('online', handleNetworkChange)
     window.addEventListener('offline', handleNetworkChange)
@@ -92,8 +92,8 @@ class Player {
      * Set initial player state
      */
     this.media.controls = false
-    this.media.volume = parseInt(this.volumeRange.value) || 0.4
     this.media.muted = false
+    this.media.volume = parseFloat(this.volumeRange.value) || 0.4
 
     /**
      * Register event listeners
@@ -106,6 +106,7 @@ class Player {
     this.replayBtn.addEventListener('click', this.replay)
     this.nextBtn.addEventListener('click', this.nextTrack)
     this.previousBtn.addEventListener('click', this.previousTrack)
+    this.track.addEventListener('click', this.replay)
 
     this.volumeRange.addEventListener('input', this.setVolume)
     this.progressRange.addEventListener('input', this.seek)
@@ -313,11 +314,11 @@ function  filter() {
 }
 
 function handleNetworkChange (evt) {
-  const indicator = document.querySelector('.indicator')
+  const indicator = document.querySelector('.network')
   if (navigator.onLine) {
-    indicator.classList.add('hide')
+    indicator.classList.add('online')
   } else {
-    indicator.classList.remove('hide')
+    indicator.classList.remove('online')
   }
 }
 

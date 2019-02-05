@@ -45,17 +45,13 @@
     <link rel="stylesheet" type="text/css "href="./index.css">
   </head>
   <body>
-    <div class="indicator hide">
-      <div class="nes-balloon from-left connection-indicator">
-        <p>It seems you're offline 🚨</p>
-        <button class="nes-btn">
-          <i class="nes-icon close is-small"></i>
-        </button>
-      </div>
-    </div>
     <main>
       <header id="playback" class="nes-container player with-title">
         <h2 class="title"><a href="https://aersia.net" target="_blank">Aersia.net</a></h2>
+        <section class="indicators nes-container">
+          <article class="current-track"></article>
+          <h4 class="indicator network online">LIVE</h4>
+        </section>
         <audio>
           <source src="#" type="audio/mp4"/>
            This browser does not support video playback
@@ -432,10 +428,6 @@
 </svg>
             </button>
           </div>
-        </section>
-        <section id="current-track" class="nes-container with-title">
-          <h2 class="title">Current track</h2>
-          <article class="current-track"></article>
         </section>
       </header>
       <section id="playlist" class="nes-container">
