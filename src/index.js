@@ -43,8 +43,6 @@ async function main () {
     const search = document.querySelector('#search')
     search.addEventListener('keyup', filter)
 
-
-
     const connectionIndicatorBtn = document.querySelector('.connection-indicator button')
     connectionIndicatorBtn.addEventListener('click', () => {
       const indicator = document.querySelector('.indicator')
@@ -110,8 +108,7 @@ class Player {
     this.previousBtn.addEventListener('click', this.previousTrack)
 
     this.volumeRange.addEventListener('input', this.setVolume)
-
-    // this.progressRange.addEventListener('input', this.)
+    this.progressRange.addEventListener('input', this.seek)
 
     this.media.addEventListener('timeupdate', this.trackProgress)
     this.media.addEventListener('ended', this.nextTrack)
@@ -145,7 +142,11 @@ class Player {
   }
 
   setVolume = () => {
-    console.log('hi')
+    this.media.volume = this.volumeRange.value
+  }
+
+  seek = () => {
+    this.media.currentTime = this.media.duration * (this.progressRange.value/100)
   }
 
   reset = () => {

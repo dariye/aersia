@@ -147,6 +147,8 @@ article h4 {
 
 
 input[type=range] {
+  transition: all 0.1s ease-in;
+  -webkit-appearance: none;
   height: 48px;
   width: 100%;
   padding: 4px;
@@ -154,6 +156,11 @@ input[type=range] {
   background-color: #fff;
   box-shadow: 4px 0, -4px 0, 0 4px, 0 -4px;
   appearance: none;
+  outline: none;
+  border-radius: none;
+}
+
+input[type=range]:focus {
   outline: none;
 }
 
@@ -166,12 +173,12 @@ background-size: 20px 20px;
 **/
 
 input[type=range]::-webkit-slider-thumb {
-  transition: all 0.1s ease-in;
   position: relative;
   -webkit-appearance: none;
-  background-color: #212529;
+  background: #212529;
   cursor: url(https://unpkg.com/nes.css/assets/cursor.png), auto;
   border: none;
+  border-radius: unset;
   height: 100%;
   width: 0.5rem;
 }
@@ -179,9 +186,10 @@ input[type=range]::-webkit-slider-thumb {
 input[type=range]::-moz-range-thumb {
   position: relative;
   -webkit-appearance: none;
-  background-color: #212529;
-  cursor: pointer;
+  background: #212529;
+  cursor: url(https://unpkg.com/nes.css/assets/cursor.png), auto;
   border: none;
+  border-radius: unset;
   height: 100%;
   width: 0.5rem;
 }
@@ -189,30 +197,21 @@ input[type=range]::-moz-range-thumb {
 input[type=range]::-ms-thumb {
   position: relative;
   -webkit-appearance: none;
-  background-color: #212529;
-  cursor: pointer;
+  background: #212529;
+  cursor: url(https://unpkg.com/nes.css/assets/cursor.png), auto;
   border: none;
+  border-radius: unset;
   height: 100%;
   width: 0.5rem;
 }
 
-
-input[type=range]:focus {
-  outline: none;
-}
-
-input[type=range]::-ms-track {
-  width: 100%;
-  cursor: pointer;
-  background: transparent;
-  color: transparent;
-}
-
 input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
   width: 100%;
   height: 100%;
   cursor: inherit;
   background: #e7e7e7;
+  color: #212529;
   border: none;
 }
 
@@ -220,25 +219,24 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   background: #e7e7e7;
 }
 
-
-input[type=range]::-moz-range-track {
+input[type=range]::-ms-track {
+  -webkit-appearance: none;
   width: 100%;
   height: 100%;
   cursor: inherit;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #3071a9;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
+  background: #e7e7e7;
+  color: #212529;
+  border: none;
 }
 
-input[type=range]::-ms-track {
+input[type=range]::-moz-range-track {
+  -webkit-appearance: none;
   width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  border-width: 16px 0;
-  color: transparent;
+  height: 100%;
+  cursor: inherit;
+  background: #e7e7e7;
+  color: #212529;
+  border: none;
 }
 
 input[type=range]::-ms-fill-lower {
