@@ -81,6 +81,7 @@ class Player {
     this.progressRange = document.querySelector('.progress')
     this.volumeRange = document.querySelector('.volume')
     this.elasped = document.querySelector('.elasped')
+    this.duration = document.querySelector('.duration')
     this.nextBtn = document.querySelector('.next')
     this.previousBtn = document.querySelector('.previous')
     this.muteBtn = document.querySelector('.mute')
@@ -169,8 +170,10 @@ class Player {
       ? 0
       : Math.floor((100/duration) * currentTime)
 
-    let time = currentTime
-    // this.elasped.textContent = `${((time-(time%=60))/60+(9<time?':':'0')+time)}`
+    if (currentTime) this.elasped.textContent = `
+    ${parseInt(this.media.currentTime/60, 10)}:${parseInt(this.media.currentTime%60)}`
+    if (duration) this.duration.textContent = `
+    ${parseInt(this.media.duration/60, 10)}:${parseInt(this.media.duration%60)}`
   }
 
   load = (ctx) => {

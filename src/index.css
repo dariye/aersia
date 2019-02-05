@@ -268,8 +268,13 @@ input[type=range]:focus::-ms-fill-upper {
 
 .controls .duration,
 .controls .elasped {
+  transition: all 0.1s linear;
   flex-grow: 2;
   flex-basis: 30%;
+  font-size: 0.5rem;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .play,
@@ -442,25 +447,6 @@ footer section {
   }
 }
 
-/* .indicator { */
-/*   position: absolute; */
-/*   top: 1rem; */
-/*   left: 1rem; */
-/*   z-index: 99999; */
-/* } */
-/*  */
-/* .connection-indicator { */
-/*   display: flex; */
-/*   max-width: 20rem; */
-/*   background: white; */
-/* } */
-/*  */
-/* .connection-indicator button { */
-/*   position: absolute; */
-/*   top: 0; */
-/*   right: 0; */
-/* } */
-/*  */
 @media only screen and (min-width: 659px) {
   .controls {
     flex-direction: row;
@@ -469,6 +455,10 @@ footer section {
   .control-group {
     width: 50%;
     padding-top: 0;
+  }
+
+  footer main {
+    flex-direction: column;
   }
 }
 
