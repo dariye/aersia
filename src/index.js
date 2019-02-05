@@ -3,12 +3,6 @@
  * primary
  * 1. offline
  * 2. performant - service workers
- *
- *
- *  secondary
- * 1. active listeners with pusher
- * 2. number of likes with pusher
- * 3. number of shares
  */
 
 import 'babel-polyfill'
@@ -26,10 +20,7 @@ const PLAYLISTS = {
 let player = undefined
 let deferredA2HS = undefined
 
-
-
 async function main () {
-
   try {
     const { trackList: { track } } = await playlist()
 
@@ -43,12 +34,7 @@ async function main () {
     const search = document.querySelector('#search')
     search.addEventListener('keyup', filter)
 
-    // const connectionIndicatorBtn = document.querySelector('.connection-indicator button')
-    // connectionIndicatorBtn.addEventListener('click', () => {
-    //   const indicator = document.querySelector('.indicator')
-    //   indicator.classList.add('hide')
-    // })
-    //offline indicator
+      //offline indicator
     window.addEventListener('online', handleNetworkChange)
     window.addEventListener('offline', handleNetworkChange)
     window.addEventListener('beforeinstallprompt', evt => {

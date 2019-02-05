@@ -43,9 +43,15 @@ main {
   background: #e7e7e7;
 }
 
-::-webbkit-scrollbar-thumb,
-::-webbkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb {
   background: #212529;
+  opacity: 0.6;
+  height: 4rem;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
 }
 
 main {

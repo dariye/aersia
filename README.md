@@ -6,6 +6,9 @@ An 8-bit player for the aersia.net playlists
 - [x] Add to home screen
 
 ## Todo
+- [] number of users w/ go<>websockets
+- [] offline/online
+- [] shuffle players
 - [] browser testing
 - [] switch between playlists
 - [] offline-first
