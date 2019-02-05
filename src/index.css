@@ -303,11 +303,19 @@ input[type=range]:focus::-ms-fill-upper {
   padding-bottom: 0.1rem;
 }
 
+.playlist-container:after {
+  /* z-index: 0; */
+}
+
 .tracks {
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
   max-height: 40rem;
+}
+
+.tracks::-webkit-scrollbar {
+  max-height: 38rem;
 }
 
 
@@ -371,8 +379,33 @@ footer section {
   margin-bottom: 1rem;
 }
 
+.indicator-group {
+  display: flex;
+}
+
 .indicator {
   display: flex;
+  margin-bottom: 0;
+  font-size: 0.6rem;
+}
+
+.indicator:last-child {
+  margin-left: 0.7rem;
+}
+
+.presence {
+  transition: all 0.2s ease-in;
+}
+
+.user-count {
+  text-decoration: underline;
+}
+
+.user-count:before {
+  content: ' ';
+  width: 0.1rem;
+  display: inline-block;
+  background: transparent;
 }
 
 .current-track {
@@ -385,7 +418,7 @@ footer section {
 
 .network:after {
   content: ' ';
-  margin-top: 5px;
+  margin-top: 1px;
   margin-left: 8px;
   display: block;
   width: 4px;
@@ -406,7 +439,7 @@ footer section {
 
 .network.online:after {
   content: ' ';
-  margin-top: 5px;
+  margin-top: 1px;
   margin-left: 8px;
   display: block;
   width: 4px;
