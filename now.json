@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "aersia",
+  "alias": ["aersia", "aersia.pauldariye.com"],
+  "builds": [
+    { "src": "**/*.{html,txt,svg,png,jpg,gif,ico,webmanifest,js,json,css}", "use": "@now/static" }
+  ]
+}
