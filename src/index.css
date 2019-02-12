@@ -13,6 +13,11 @@
   padding-left: 1.5rem;
 }
 
+.nes-input, .nes-textarea {
+  padding: 0;
+  margin: 0;
+}
+
 /**
  * aersia.pauldariye.com styles
  */
@@ -168,7 +173,7 @@ input[type=range] {
   box-shadow: 4px 0, -4px 0, 0 4px, 0 -4px;
   appearance: none;
   outline: none;
-  border-radius: none;
+  border-radius: unset;
 }
 
 input[type=range]:focus {
@@ -318,11 +323,58 @@ input[type=range]:focus::-ms-fill-upper {
   max-height: 38rem;
 }
 
-
 .track {
 
 }
 
+select {
+  display: none;
+}
+
+.select {
+  position: relative;
+}
+
+.selected {
+  background: #fff;
+}
+
+.selected:after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: red transparent transparent transparent;
+}
+
+.selected.active:after {
+  border-color: transparent transparent red transparent;
+  top: 7px;
+}
+
+ul.select {
+  margin: 0;
+}
+
+.select li, .selected {
+  list-style-type: none;
+  color: #212529;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #212529;
+  cursor: url(https://unpkg.com/nes.css/assets/cursor.png), auto;
+}
+
+.select li {
+  position: absolute;
+  background: #fff;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
 
 .is-gray,
 .is-gray:after,
@@ -376,7 +428,6 @@ footer section {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  margin-bottom: 1rem;
 }
 
 .indicator-group {
@@ -386,7 +437,7 @@ footer section {
 .indicator {
   display: flex;
   margin-bottom: 0;
-  font-size: 0.6rem;
+  font-size: 0.4rem;
 }
 
 .indicator:last-child {
@@ -409,16 +460,18 @@ footer section {
 }
 
 .current-track {
-
-}
+ }
 
 .current-track h3 {
   margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .network:after {
   content: ' ';
-  margin-top: 1px;
+  margin-top: -3px;
   margin-left: 8px;
   display: block;
   width: 4px;
@@ -439,7 +492,7 @@ footer section {
 
 .network.online:after {
   content: ' ';
-  margin-top: 1px;
+  margin-top: -3px;
   margin-left: 8px;
   display: block;
   width: 4px;
@@ -486,6 +539,15 @@ footer section {
   }
 }
 
+@media only screen and (max-width: 414px) {
+  .nes-container {
+    padding: 1.5rem 1rem;
+  }
+  .current-track {
+    flex-basis: 60%;
+  }
+}
+
 @media only screen and (min-width: 659px) {
   .controls {
     flex-direction: row;
@@ -495,7 +557,9 @@ footer section {
     width: 50%;
     padding-top: 0;
   }
+}
 
+@media only screen and (max-width: 659px) {
   footer main {
     flex-direction: column;
   }

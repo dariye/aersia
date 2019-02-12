@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "name": "aersia-ws",
+  "alias": "aersia-ws.pauldariye.com",
+  "type": "docker",
+  "dotenv": ".env",
+  "features": {
+    "cloud": "v1"
+  }
+}

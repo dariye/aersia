@@ -8,17 +8,32 @@
 import 'babel-polyfill'
 const URL = 'https://vip.aersia.net/roster.xml'
 
-const PLAYLISTS = {
-  'vip': 'https://vip.aersia.net/roster.xml',
-  'mellow': 'https://vip.aersia.net/roster.xml',
-  'source': 'vip.aersia.net/roster-source.xml',
-  'exiled': 'vip.aersia.net/roster-exiled.xml',
-  'wap': 'wap.aersia.net/roster.xml',
-  'cpp': 'cpp.aersia.net/roster.xml'
-}
+const PLAYLISTS = [
+  {
+    name: 'vip',
+    source: 'https://vip.aersia.net/roster.xml'
+  },
+  {
+    name: 'mellow',
+    source: 'https://vip.aersia.net/roster.xml'
+  },
+  {
+    name: 'source',
+    source: 'vip.aersia.net/roster-source.xml'
+  },
+  {
+    name: 'wap',
+    source: 'wap.aersia.net/roster.xml'
+  },
+  {
+    name: 'cpp',
+    source: 'cpp.aersia.net/roster.xml'
+  }
+]
 
 let player = undefined
 let deferredA2HS = undefined
+
 
 async function main () {
   try {
@@ -27,6 +42,8 @@ async function main () {
     if (!player) player = new Player()
 
     renderTracklistView(track.slice(5), 'tracklist')
+
+    playlistSelectView(PLAYLISTS)
 
     const firstTrack = document.querySelector('.track article')
     if (firstTrack) player.load(firstTrack)
@@ -54,12 +71,22 @@ class Tracklist {
   constructor(tracklist = []) {
     this.tracklist = new Set(tracklist)
   }
+
+  async fetch (url) {
+
+  }
+
+  async parse () {
+
+  }
 }
 
 class Player {
   constructor() {
     this.currentTrack = null
 
+
+    /** Elements **/
     this.media = document.querySelector('audio')
     this.playBtn = document.querySelector('.play')
     this.pauseBtn = document.querySelector('.pause')
@@ -231,6 +258,54 @@ function createTrackView (id, { creator, location, title }) {
   trackContent['onclick'] = function (evt) { player.load(this) }
 
   return track
+}
+
+function playlistSelectView (list = []) {
+  const select = document.querySelector('select')
+  if (!select) return
+
+  list.forEach(item => {
+    const option = document.createElement('option')
+    option.value = item.source
+
+    const text = document.createTextNode(item.name.toUpperCase())
+    option.appendChild(text)
+    select.appendChild(option)
+  })
+
+  select.options[0].selected = true
+
+
+  const options = document.createElement('ul')
+  options.classList.add('options', 'hide')
+
+  const selected = document.createElement('li')
+  selected.classList.add('selected')
+  selected.innerHTML = `
+    ${select.options[select.selectedIndex].innerHTML}
+  `
+  options.appendChild(selected)
+
+  select.querySelectorAll('option').forEach((element, idx) => {
+    if (idx === list.length-1) return
+    const option = document.createElement('li')
+    option.innerHTML = select.options[idx+1].innerHTML
+    option.addEventListener('click', function (evt) {
+      console.log(evt)
+    })
+
+    options.appendChild(option)
+  })
+
+
+  options.addEventListener('click', function (evt) {
+    evt.preventDefault()
+    evt.stopPropagation()
+
+    this.classList.toggle('active')
+  })
+
+  select.appendChild(options)
 }
 
 async function fetchPlaylist () {

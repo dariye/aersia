@@ -418,8 +418,6 @@
             <input type="range" class="progress" min="0" max="" />
             <div class="duration nes-progress"><span id="track-duration"></span></div>
             <input type="range" class="volume" value="0.4" min="0" max="1" step="0.1"/>
-            <!-- <progress class="volume nes&#45;progress" value="30" max="100"> -->
-            <!-- </progress> -->
             <button class="nes-btn mute">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path fill-rule="evenodd" d="M5.333 10.667h1.778v1.777H5.333v-1.777zm5.334-8.89v1.779h1.777v1.777h-1.777V16H8.889v-1.778H7.11v-1.778H8.89V7.111H7.11V5.333H8.89V3.556H7.11V1.778H8.89V0h1.778v1.778zM14.222 0H16v1.778h-1.778V0zm-1.778 1.778h1.778v1.778h-1.778V1.778zm-5.333 7.11H5.333v1.779H3.556V5.333h1.777v1.778h1.778V8.89zm-5.333 1.779h1.778v1.777H1.778v-1.777zM0 12.444h1.778v1.778H0v-1.778zm5.333-8.888h1.778v1.777H5.333V3.556z"/>
@@ -439,7 +437,13 @@
           <input type="search" placeholder="..." class="nes-input" id="search" />
         </section>
         <section id="tracklist" class="nes-container with-title playlist-container">
-          <h2 class="title"><span id="playlist-name"></span>Playlist</h2>
+          <h2 class="title">
+            <span class="select">
+              <select>
+              </select>
+            </span>
+            Playlist
+          </h2>
         </section>
       </section>
       <footer class="nes-container">
@@ -464,6 +468,7 @@
           </section>
         </main>
         <p>Made with <i class="nes-icon heart is-small"></i> by <a href="https://twitter.com/pauldariye" target="_blank">@pauldariye</a></p>
+        <p class="copyright">&copy;<span class="year"></span></p>
       </footer>
     </main>
     <script src="./index.js"></script>
