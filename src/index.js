@@ -1,12 +1,10 @@
-/**
- * TODO:
- * primary
- * 1. offline
- * 2. performant - service workers
- */
-
 import 'babel-polyfill'
+import 'serviceworker-cache-polyfill'
+
 const URL = 'https://vip.aersia.net/roster.xml'
+let player = undefined
+let deferredA2HS = undefined
+let users = 1
 
 const PLAYLISTS = [
   {
@@ -31,10 +29,6 @@ const PLAYLISTS = [
   }
 ]
 
-let player = undefined
-let deferredA2HS = undefined
-
-
 async function main () {
   try {
     const { trackList: { track } } = await playlist()
@@ -43,28 +37,52 @@ async function main () {
 
     renderTracklistView(track.slice(5), 'tracklist')
 
-    playlistSelectView(PLAYLISTS)
+    // playlistSelectView(PLAYLISTS)
 
     const firstTrack = document.querySelector('.track article')
-    if (firstTrack) player.load(firstTrack)
+    if (firstTrack) {
+      player.load(firstTrack)
+      player.pause()
+    }
+
+    const count = document.querySelector('.user-count')
+
+    if (window["WebSocket"]) {
+      const conn = new WebSocket("wss://" + 'gochat.ngrok.io' + '/ws');
+      conn.onmessage = function (evt) {
+        users = JSON.parse(evt.data).Count
+        count.textContent = `${users}`
+      }
+    } else {
+      count.textContent = `${users}`
+    }
 
     const search = document.querySelector('#search')
     search.addEventListener('keyup', filter)
+    document.querySelector('.year').textContent = `${new Date().getFullYear()}`
 
-      //offline indicator
+    // offline stuff
     window.addEventListener('online', handleNetworkChange)
     window.addEventListener('offline', handleNetworkChange)
-    window.addEventListener('beforeinstallprompt', evt => {
-      evt.preventDefault()
-      if (!deferredA2HS) deferredA2HS = evt
-      // TODO: Add button handler https://developers.google.com/web/fundamentals/app-install-banners/?hl=en
-    })
+    // window.addEventListener('beforeinstallprompt', evt => {
+    //   evt.preventDefault()
+    //   if (!deferredA2HS) deferredA2HS = evt
+    //   // TODO: Add button handler https://developers.google.com/web/fundamentals/app-install-banners/?hl=en
+  // })
+    
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log(`Service worker registered! Scope: ${registration.scope}`)
+        })
+        .catch(err => {
+          console.log(`Service worker registration failed: ${err}`)
+        })
     }
   } catch(err) {
-    console.log(err)
+    // console.log(err)
   }
+
 }
 
 class Tracklist {
@@ -84,7 +102,6 @@ class Tracklist {
 class Player {
   constructor() {
     this.currentTrack = null
-
 
     /** Elements **/
     this.media = document.querySelector('audio')
@@ -110,6 +127,12 @@ class Player {
     this.media.volume = parseFloat(this.volumeRange.value) || 0.4
 
     /**
+     * Set initial control state
+     */
+    this.elasped.textContent =`--:--`
+    this.duration.textContent = `--:--`
+
+    /**
      * Register event listeners
      */
     this.playBtn.addEventListener('click', this.togglePlayback)
@@ -121,25 +144,19 @@ class Player {
     this.nextBtn.addEventListener('click', this.nextTrack)
     this.previousBtn.addEventListener('click', this.previousTrack)
     this.track.addEventListener('click', this.replay)
-
     this.volumeRange.addEventListener('input', this.setVolume)
-    this.progressRange.addEventListener('input', this.seek)
-
+    this.progressRange.addEventListener('click', this.seek)
     this.media.addEventListener('timeupdate', this.trackProgress)
     this.media.addEventListener('ended', this.nextTrack)
   }
 
   togglePlayback = (evt) => {
-    if (this.media.paused || this.media.ended) {
-      this.pauseBtn.classList.toggle('hide')
-      this.playBtn.classList.toggle('hide')
-      this.media.play()
+    if (this.media.paused) {
+      this.play()
     // TODO:
     // - on play, scroll to next up
     } else {
-      this.pauseBtn.classList.toggle('hide')
-      this.playBtn.classList.toggle('hide')
-      this.media.pause()
+      this.pause()
     }
   }
 
@@ -147,6 +164,21 @@ class Player {
     this.media.muted = !this.media.muted
     this.muteBtn.classList.toggle('hide')
     this.unmuteBtn.classList.toggle('hide')
+  }
+
+  play = async () => {
+    try {
+      this.pauseBtn.classList.remove('hide')
+      this.playBtn.classList.add('hide')
+      await this.media.play()
+    } catch(err) {
+    }
+  }
+
+  pause = () => {
+    this.pauseBtn.classList.add('hide')
+    this.playBtn.classList.remove('hide')
+    this.media.pause()
   }
 
   stop = () => {
@@ -160,8 +192,10 @@ class Player {
     this.media.volume = this.volumeRange.value
   }
 
-  seek = () => {
-    this.media.currentTime = this.media.duration * (this.progressRange.value/100)
+  seek = (evt) => {
+    const value = evt.offsetX / this.progressRange.offsetWidth
+    this.media.currentTime = value * this.media.duration
+    this.progressRange.value = value / 100
   }
 
   reset = () => {
@@ -179,14 +213,18 @@ class Player {
   trackProgress = () => {
     const currentTime = this.media.currentTime
     const duration = this.media.duration
+
     this.progressRange.value = !duration || duration === 0
       ? 0
       : Math.floor((100/duration) * currentTime)
 
     if (currentTime) this.elasped.textContent = `
     ${parseInt(this.media.currentTime/60, 10)}:${parseInt(this.media.currentTime%60)}`
-    if (duration) this.duration.textContent = `
-    ${parseInt(this.media.duration/60, 10)}:${parseInt(this.media.duration%60)}`
+
+    if (duration) {
+      this.duration.textContent = `
+          ${parseInt(this.media.duration/60, 10)}:${parseInt(this.media.duration%60)}`
+    }
   }
 
   load = (ctx) => {
@@ -350,7 +388,7 @@ function xmlToJson (xml) {
 
         obj[nodeName].push(xmlToJson(item))
       }
-    }
+    }1
   }
 
   return obj

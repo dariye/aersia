@@ -18,6 +18,14 @@
   margin: 0;
 }
 
+.nes-btn {
+  padding: 12px;
+}
+
+a {
+  color: #006EE5;
+}
+
 /**
  * aersia.pauldariye.com styles
  */
@@ -72,18 +80,6 @@ li {
   width: 100%;
 }
 
-/* #playback { */
-/*   position: fixed; */
-/*   z-index: 2; */
-/* } */
-/*  */
-/* #playlist { */
-/*   top: 7em; */
-/*   left: 0; */
-/*   z-index: 2; */
-/*   background: white; */
-/* } */
-
 audio {
   display: none;
 }
@@ -105,7 +101,7 @@ input[type=search]:focus {
 }
 
 article h3 {
-  font-size: 0.4rem;
+  font-size: 0.75rem;
 }
 
 article h4 {
@@ -294,6 +290,43 @@ input[type=range]:focus::-ms-fill-upper {
   left: 0;
 }
 
+/* .nes-btn img { */
+/*   width: */
+/* } */
+/*  */
+/* .play { */
+/*   background: url('./images/play.svg') center center no-repeat; */
+/* } */
+/*  */
+/* .pause { */
+/*   background: url('./images/pause.svg') center center no-repeat; */
+/* } */
+/*  */
+/* .next { */
+/*   background: url('./images/next.svg') center center no-repeat; */
+/* } */
+/*  */
+/* .previous { */
+/*   background: url('./images/previous.svg') center center no-repeat; */
+/* } */
+/*  */
+/* .replay { */
+/*   background: url('./images/replay.svg') center center no-repeat; */
+/* } */
+/*  */
+/* .stop { */
+/*   background: url('./images/stop.svg') center center no-repeat; */
+/* } */
+/*  */
+/* .mute { */
+/*   background: url('./images/mute.svg') center center no-repeat; */
+/* } */
+/*  */
+/* .unmute { */
+/*   background: url('./images/unmute.svg') center center no-repeat; */
+/* } */
+
+
 .hide {
   display: none;
 }
@@ -402,8 +435,9 @@ footer li {
 }
 
 footer p {
-  padding-top: 2rem;
+  padding-top: 1rem;
   text-align: center;
+  margin-bottom: 0;
 }
 
 footer .heart {
@@ -423,11 +457,29 @@ footer section {
   flex-basis: 50%;
 }
 
+.year {
+  display: inline-block;
+  padding-left: 5px;
+}
+
 .indicators {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+}
+
+
+.nes-icon.hn {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+.nes-icon.hn:before {
+  width: 2px;
+  height: 2px;
+box-shadow: 10px 2px 0 #FF4000,12px 2px 0 #FF4000,14px 2px 0 #FF4000,16px 2px 0 #FF4000,18px 2px 0 #FF4000,20px 2px 0 #FF4000,22px 2px 0 #FF4000,24px 2px 0 #FF4000,26px 2px 0 #FF4000,28px 2px 0 #FF4000,30px 2px 0 #FF4000,32px 2px 0 #FF4000,8px 4px 0 #FF4000,10px 4px 0 #FF4000,12px 4px 0 #FF4000,14px 4px 0 #FF4000,16px 4px 0 #FF4000,18px 4px 0 #FF4000,20px 4px 0 #FF4000,22px 4px 0 #FF4000,24px 4px 0 #FF4000,26px 4px 0 #FF4000,28px 4px 0 #FF4000,30px 4px 0 #FF4000,32px 4px 0 #FF4000,34px 4px 0 #FF4000,6px 6px 0 #FF4000,8px 6px 0 #FF4000,10px 6px 0 #FF4000,12px 6px 0 #FF4000,14px 6px 0 #FF4000,16px 6px 0 #FF4000,18px 6px 0 #FF4000,20px 6px 0 #FF4000,22px 6px 0 #FF4000,24px 6px 0 #FF4000,26px 6px 0 #FF4000,28px 6px 0 #FF4000,30px 6px 0 #FF4000,32px 6px 0 #FF4000,34px 6px 0 #FF4000,36px 6px 0 #FF4000,6px 8px 0 #FF4000,8px 8px 0 #FF4000,10px 8px 0 #FF4000,12px 8px 0 #FF4000,14px 8px 0 #FF4000,16px 8px 0 #FF4000,18px 8px 0 #FF4000,20px 8px 0 #FF4000,22px 8px 0 #FF4000,24px 8px 0 #FF4000,26px 8px 0 #FF4000,28px 8px 0 #FF4000,30px 8px 0 #FF4000,32px 8px 0 #FF4000,34px 8px 0 #FF4000,36px 8px 0 #FF4000,6px 10px 0 #FF4000,8px 10px 0 #FF4000,10px 10px 0 #FF4000,12px 10px 0 #FF4000,14px 10px 0 #FF4000,16px 10px 0 #FF4000,18px 10px 0 #FF4000,20px 10px 0 #FF4000,22px 10px 0 #FF4000,24px 10px 0 #FF4000,26px 10px 0 #FF4000,28px 10px 0 #FF4000,30px 10px 0 #FF4000,32px 10px 0 #FF4000,34px 10px 0 #FF4000,36px 10px 0 #FF4000,6px 12px 0 #FF4000,8px 12px 0 #FF4000,10px 12px 0 #FFFFFF,12px 12px 0 #FF4000,14px 12px 0 #FF4000,16px 12px 0 #FF4000,18px 12px 0 #FF4000,20px 12px 0 #FF4000,22px 12px 0 #FF4000,24px 12px 0 #FF4000,26px 12px 0 #FF4000,28px 12px 0 #FF4000,30px 12px 0 #FF4000,32px 12px 0 #FFFFFF,34px 12px 0 #FF4000,36px 12px 0 #FF4000,6px 14px 0 #FF4000,8px 14px 0 #FF4000,10px 14px 0 #FFFFFF,12px 14px 0 #FFFFFF,14px 14px 0 #FF4000,16px 14px 0 #FF4000,18px 14px 0 #FF4000,20px 14px 0 #FF4000,22px 14px 0 #FF4000,24px 14px 0 #FF4000,26px 14px 0 #FF4000,28px 14px 0 #FF4000,30px 14px 0 #FFFFFF,32px 14px 0 #FFFFFF,34px 14px 0 #FF4000,36px 14px 0 #FF4000,6px 16px 0 #FF4000,8px 16px 0 #FF4000,10px 16px 0 #FF4000,12px 16px 0 #FFFFFF,14px 16px 0 #FFFFFF,16px 16px 0 #FF4000,18px 16px 0 #FF4000,20px 16px 0 #FF4000,22px 16px 0 #FF4000,24px 16px 0 #FF4000,26px 16px 0 #FF4000,28px 16px 0 #FFFFFF,30px 16px 0 #FFFFFF,32px 16px 0 #FF4000,34px 16px 0 #FF4000,36px 16px 0 #FF4000,6px 18px 0 #FF4000,8px 18px 0 #FF4000,10px 18px 0 #FF4000,12px 18px 0 #FF4000,14px 18px 0 #FFFFFF,16px 18px 0 #FFFFFF,18px 18px 0 #FF4000,20px 18px 0 #FF4000,22px 18px 0 #FF4000,24px 18px 0 #FF4000,26px 18px 0 #FFFFFF,28px 18px 0 #FFFFFF,30px 18px 0 #FF4000,32px 18px 0 #FF4000,34px 18px 0 #FF4000,36px 18px 0 #FF4000,6px 20px 0 #FF4000,8px 20px 0 #FF4000,10px 20px 0 #FF4000,12px 20px 0 #FF4000,14px 20px 0 #FF4000,16px 20px 0 #FFFFFF,18px 20px 0 #FFFFFF,20px 20px 0 #FF4000,22px 20px 0 #FF4000,24px 20px 0 #FFFFFF,26px 20px 0 #FFFFFF,28px 20px 0 #FF4000,30px 20px 0 #FF4000,32px 20px 0 #FF4000,34px 20px 0 #FF4000,36px 20px 0 #FF4000,6px 22px 0 #FF4000,8px 22px 0 #FF4000,10px 22px 0 #FF4000,12px 22px 0 #FF4000,14px 22px 0 #FF4000,16px 22px 0 #FF4000,18px 22px 0 #FFFFFF,20px 22px 0 #FFFFFF,22px 22px 0 #FFFFFF,24px 22px 0 #FFFFFF,26px 22px 0 #FF4000,28px 22px 0 #FF4000,30px 22px 0 #FF4000,32px 22px 0 #FF4000,34px 22px 0 #FF4000,36px 22px 0 #FF4000,6px 24px 0 #FF4000,8px 24px 0 #FF4000,10px 24px 0 #FF4000,12px 24px 0 #FF4000,14px 24px 0 #FF4000,16px 24px 0 #FF4000,18px 24px 0 #FF4000,20px 24px 0 #FFFFFF,22px 24px 0 #FFFFFF,24px 24px 0 #FF4000,26px 24px 0 #FF4000,28px 24px 0 #FF4000,30px 24px 0 #FF4000,32px 24px 0 #FF4000,34px 24px 0 #FF4000,36px 24px 0 #FF4000,6px 26px 0 #FF4000,8px 26px 0 #FF4000,10px 26px 0 #FF4000,12px 26px 0 #FF4000,14px 26px 0 #FF4000,16px 26px 0 #FF4000,18px 26px 0 #FF4000,20px 26px 0 #FFFFFF,22px 26px 0 #FFFFFF,24px 26px 0 #FF4000,26px 26px 0 #FF4000,28px 26px 0 #FF4000,30px 26px 0 #FF4000,32px 26px 0 #FF4000,34px 26px 0 #FF4000,36px 26px 0 #FF4000,6px 28px 0 #FF4000,8px 28px 0 #FF4000,10px 28px 0 #FF4000,12px 28px 0 #FF4000,14px 28px 0 #FF4000,16px 28px 0 #FF4000,18px 28px 0 #FF4000,20px 28px 0 #FFFFFF,22px 28px 0 #FFFFFF,24px 28px 0 #FF4000,26px 28px 0 #FF4000,28px 28px 0 #FF4000,30px 28px 0 #FF4000,32px 28px 0 #FF4000,34px 28px 0 #FF4000,36px 28px 0 #FF4000,8px 30px 0 #FF4000,10px 30px 0 #FF4000,12px 30px 0 #FF4000,14px 30px 0 #FF4000,16px 30px 0 #FF4000,18px 30px 0 #FF4000,20px 30px 0 #FFFFFF,22px 30px 0 #FFFFFF,24px 30px 0 #FF4000,26px 30px 0 #FF4000,28px 30px 0 #FF4000,30px 30px 0 #FF4000,32px 30px 0 #FF4000,34px 30px 0 #FF4000,10px 32px 0 #FF4000,12px 32px 0 #FF4000,14px 32px 0 #FF4000,16px 32px 0 #FF4000,18px 32px 0 #FF4000,20px 32px 0 #FF4000,22px 32px 0 #FF4000,24px 32px 0 #FF4000,26px 32px 0 #FF4000,28px 32px 0 #FF4000,30px 32px 0 #FF4000,32px 32px 0 #FF4000;
 }
 
 .indicator-group {
@@ -460,10 +512,12 @@ footer section {
 }
 
 .current-track {
- }
+
+}
 
 .current-track h3 {
   margin: 0;
+  font-size: 0.4rem;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
