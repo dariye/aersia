@@ -10,7 +10,7 @@
     "build": "NODE_ENV=production parcel build src/index.html --no-cache --no-source-maps --out-dir=dist --public-url ./ ",
     "postbuild": "yarn run sw",
     "clean": "rimraf dist .cache",
-    "sw": "workbox injectManifest workbox-config.js",
+    "sw": "workbox generateSW workbox-config.js",
     "predeploy": "yarn run clean && yarn run build && cp now.json dist/",
     "deploy": "now dist && now alias"
   },

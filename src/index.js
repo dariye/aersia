@@ -6,28 +6,28 @@ let player = undefined
 let deferredA2HS = undefined
 let users = 1
 
-const PLAYLISTS = [
-  {
-    name: 'vip',
-    source: 'https://vip.aersia.net/roster.xml'
-  },
-  {
-    name: 'mellow',
-    source: 'https://vip.aersia.net/roster.xml'
-  },
-  {
-    name: 'source',
-    source: 'vip.aersia.net/roster-source.xml'
-  },
-  {
-    name: 'wap',
-    source: 'wap.aersia.net/roster.xml'
-  },
-  {
-    name: 'cpp',
-    source: 'cpp.aersia.net/roster.xml'
-  }
-]
+// const PLAYLISTS = [
+//   {
+//     name: 'vip',
+//     source: 'https://vip.aersia.net/roster.xml'
+//   },
+//   {
+//     name: 'mellow',
+//     source: 'https://vip.aersia.net/roster.xml'
+//   },
+//   {
+//     name: 'source',
+//     source: 'vip.aersia.net/roster-source.xml'
+//   },
+//   {
+//     name: 'wap',
+//     source: 'wap.aersia.net/roster.xml'
+//   },
+//   {
+//     name: 'cpp',
+//     source: 'cpp.aersia.net/roster.xml'
+//   }
+// ]
 
 async function main () {
   try {
@@ -36,8 +36,6 @@ async function main () {
     if (!player) player = new Player()
 
     renderTracklistView(track.slice(5), 'tracklist')
-
-    // playlistSelectView(PLAYLISTS)
 
     const firstTrack = document.querySelector('.track article')
     if (firstTrack) {
@@ -48,7 +46,7 @@ async function main () {
     const count = document.querySelector('.user-count')
 
     if (window["WebSocket"]) {
-      const conn = new WebSocket("wss://" + 'gochat.ngrok.io' + '/ws');
+      const conn = new WebSocket("wss://" + 'aersia-ws.pauldariye.com' + '/ws');
       conn.onmessage = function (evt) {
         users = JSON.parse(evt.data).Count
         count.textContent = `${users}`
@@ -83,20 +81,6 @@ async function main () {
     // console.log(err)
   }
 
-}
-
-class Tracklist {
-  constructor(tracklist = []) {
-    this.tracklist = new Set(tracklist)
-  }
-
-  async fetch (url) {
-
-  }
-
-  async parse () {
-
-  }
 }
 
 class Player {
