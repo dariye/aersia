@@ -1,5 +1,8 @@
 # Aersia Player
-An 8-bit player for the aersia.net playlists
+
+[⏯](https://aersia.pauldariye.com)
+
+An 8-bit player for the aersia.net playlists 
 
 ## Features
 - [x] Offline support
